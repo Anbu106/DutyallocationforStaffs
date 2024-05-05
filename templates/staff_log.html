@@ -1,0 +1,198 @@
+<html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Hall allocation</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../static/asset/vendors/feather/feather.css">
+  <link rel="stylesheet" href="../static/asset/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../static/asset/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="../static/asset/vendors/select2/select2.min.css">
+  <link rel="stylesheet" href="../static/asset/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../static/asset/css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../static/asset/images/favicon.png" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <p>Exam duty allocator</p>  </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>        </button>
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>                </span>              </div>
+              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                    </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">L</p>
+                          </div>
+          </li>
+         
+          <li class="nav-item nav-settings d-none d-lg-flex">
+            <a class="nav-link" href="#">
+             Logout         </a>          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+         </span>        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_settings-panel.html -->
+      
+      
+      <!-- partial -->
+      <!-- partial:../../partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Staff</span>
+              <i class="menu-arrow"></i>
+            </a>
+           
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="/hod_log">
+              <i class="icon-columns menu-icon"></i>
+              <span class="menu-title">Hod</span>
+              <i class="menu-arrow"></i>
+            </a>
+            
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="/admin">
+              <i class="icon-bar-graph menu-icon"></i>
+              <span class="menu-title">Admin</span>
+              <i class="menu-arrow"></i>
+            </a>
+            
+          </li>
+          
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-6 grid-margin stretch-card mx-auto">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Staff</h4>
+                  <p class="card-description">
+                    Login                  </p>
+                  <form class="contact-bx" name="form1" method="post">
+				 {% if msg=="success" %}
+				  <span style="color:#009933">Login success...</span>
+				  
+				  <script>
+//Using setTimeout to execute a function after 5 seconds.
+setTimeout(function () {
+   //Redirect with JavaScript
+   window.location.href= '/staff_view';
+}, 4000);
+</script>
+
+				  {% endif %}
+				  {% if msg=="fail" %}
+				  <span style="color:#FF0000">Try again...!</span>
+				  {% endif %}
+					
+						<div class="col-lg-12">
+							<div class="form-group">
+								<div class="input-group">
+									
+									<input type="text" name="staff_id" placeholder="Username" class="form-control">
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="col-lg-12">
+							<div class="form-group">
+								<div class="input-group"> 
+									
+									<input type="password" name="password" class="form-control" required="" placeholder="Password">
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12 m-b30">
+							<button name="submit" type="submit" value="Submit" class="add btn btn-primary" onClick="return validate()">Login</button>
+						</div>
+						
+					</div>
+				</form>
+                </div>
+              </div>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="../static/asset/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../static/asset/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+  <script src="../static/asset/vendors/select2/select2.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../static/asset/js/off-canvas.js"></script>
+  <script src="../static/asset/js/hoverable-collapse.js"></script>
+  <script src="../static/asset/js/template.js"></script>
+  <script src="../static/asset/js/settings.js"></script>
+  <script src="../static/asset/js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="../static/asset/js/file-upload.js"></script>
+  <script src="../static/asset/js/typeahead.js"></script>
+  <script src="../static/asset/js/select2.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>

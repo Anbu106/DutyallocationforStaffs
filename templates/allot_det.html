@@ -1,0 +1,193 @@
+<html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Hall allocation</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../static/asset/vendors/feather/feather.css">
+  <link rel="stylesheet" href="../static/asset/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../static/asset/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="../static/asset/vendors/select2/select2.min.css">
+  <link rel="stylesheet" href="../static/asset/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../static/asset/css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../static/asset/images/favicon.png" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <p>Exam duty allocator</p>  </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>        </button>
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>                </span>              </div>
+				  <form name="form1" method="post">
+              <input type="text" class="form-control" id="navbar-search-input" name="search" placeholder="Search now" aria-label="search" aria-describedby="search">
+			  </form>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                    </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">L</p>
+                          </div>
+          </li>
+         
+          <li class="nav-item nav-settings d-none d-lg-flex">
+            <a class="nav-link" href="#">
+             Logout         </a>          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+         </span>        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_settings-panel.html -->
+      
+      
+      <!-- partial -->
+      <!-- partial:../../partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../../index.html">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">HOD</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/hod_reg">Staff</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/add_exam2">Exams</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/add_hall">Hall</a></li>
+				 <li class="nav-item"> <a class="nav-link" href="/add_dept">Department </a></li>
+				  <li class="nav-item"> <a class="nav-link" href="/logout">Logout</a></li>
+              </ul>
+            </div>
+          </li>
+          
+          
+          
+        </ul>
+      </nav>
+      <!-- partial -->
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-4 col-3">
+                        <h4 class="page-title">Allotment details</h4>
+                    </div>
+                    <div class="col-sm-8 col-9 text-right m-b-20">
+                        <a href="add-patient.html" class="btn btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i>Allot staff</a>
+                    </div>
+                </div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table class="table table-border table-striped custom-table datatable mb-0">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Hall name</th>
+										
+										<th>Subject code</th>
+										<th>Subject name</th>
+										<th class="text-right">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+								{% for row in hall_allocate %}
+									<tr>
+										<td><img width="28" height="28" src="../static/assets/img/user.jpg" class="rounded-circle m-r-5" alt="">{{ row.6 }}</td>
+										<td>{{ row.4 }}</td>
+										
+										<td>{{ row.1 }}</td>
+										<td>{{ row.2 }}</td>
+										<td class="text-right">
+											<div class="dropdown dropdown-action">
+												<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+												<div class="dropdown-menu dropdown-menu-right">
+													<a class="dropdown-item" href="edit-patient.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+													<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_patient"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									{% endfor %}
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+                </div>
+            </div>
+            
+        </div>
+		<div id="delete_patient" class="modal fade delete-modal" role="dialog">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-body text-center">
+						<img src="assets/img/sent.png" alt="" width="50" height="46">
+						<h3>Are you sure want to delete this Patient?</h3>
+						<div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+							<button type="submit" class="btn btn-danger">Delete</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+    </div>
+    <div class="sidebar-overlay" data-reff=""></div>
+    <script src="../static/assets/js/jquery-3.2.1.min.js"></script>
+	<script src="../static/assets/js/popper.min.js"></script>
+    <script src="../static/assets/js/bootstrap.min.js"></script>
+    <script src="../static/assets/js/jquery.slimscroll.js"></script>
+    <script src="../static/assets/js/select2.min.js"></script>
+    <script src="../static/assets/js/jquery.dataTables.min.js"></script>
+    <script src="../static/assets/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../static/assets/js/moment.min.js"></script>
+    <script src="../static/assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../static/assets/js/app.js"></script>
+</body>
+
+
+<!-- patients23:19-->
+</html>

@@ -1,0 +1,234 @@
+<html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Hall allocation</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../static/asset/vendors/feather/feather.css">
+  <link rel="stylesheet" href="../static/asset/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../static/asset/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="../static/asset/vendors/select2/select2.min.css">
+  <link rel="stylesheet" href="../static/asset/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../static/asset/css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../static/asset/images/favicon.png" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <p>Exam duty allocator</p>  </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>        </button>
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>                </span>              </div>
+				  <form name="form1" method="post">
+              <input type="text" class="form-control" id="navbar-search-input" name="search" placeholder="Search now" aria-label="search" aria-describedby="search">
+			  </form>
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                    </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">L</p>
+                          </div>
+          </li>
+         
+          <li class="nav-item nav-settings d-none d-lg-flex">
+            <a class="nav-link" href="#">
+             Logout         </a>          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+         </span>        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_settings-panel.html -->
+      
+      
+      <!-- partial -->
+      <!-- partial:../../partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../../index.html">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">HOD</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/hod_reg">Staff</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/add_exam2">Exams</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/add_hall">Hall</a></li>
+				 <li class="nav-item"> <a class="nav-link" href="/add_dept">Department </a></li>
+				  <li class="nav-item"> <a class="nav-link" href="/logout">Logout</a></li>
+              </ul>
+            </div>
+          </li>
+          
+          
+          
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="row">
+                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                  <h3 class="font-weight-bold">Welcome {{ staff }} {{ staff_name }} {{ maxid }} {{ sub_name }}</h3>
+                 
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+          
+          
+          <div class="row">
+            
+            <div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Hall details</h4>
+            <p class="card-description">
+                <code></code>
+            </p>
+            <div class="table-responsive" style="height: 300px; overflow-y: auto;">
+                <table class="table table-hover">
+                    <thead>
+					
+                        <tr>
+						<th>#</th>
+                            <th>Hall name</th>
+                            <th>Capacity</th>
+                          <th>Action</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+					
+					{% for row in hall_hall %}
+                       {% if row.1 not in allocated_reg_nos %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ row.1 }}</td>
+                            <td>{{ row.2 }}</td>
+							<td><a href="/hod_allocate1?act=ok&hid={{ row.0 }}">Select</a></td>
+                        </tr>
+						{% endif %}
+						{% endfor %}
+                        <!-- Add more rows if needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ <div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Staff details</h4>
+            <p class="card-description">
+                <code></code>
+            </p>
+            <div class="table-responsive" style="height: 300px; overflow-y: auto;">
+                <table class="table table-hover">
+                    <thead>
+					
+                        <tr>
+						<th>#</th>
+                            <th>Staff name</th>
+                            <th>Staff id</th>
+                          <th>Action</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+					
+					{% for row in hall_staff %}
+					{% if row.7 not in allocated_reg_no %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ row.2 }}</td>
+                            <td>{{ row.7 }}</td>
+							<td><a href="/hod_allocate1?act2=ok2&sid={{ row.0 }}">Assign</a></td>
+                        </tr>
+						{% endif %}
+						{% endfor %}
+                        <!-- Add more rows if needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+          
+          
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+       
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>   
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
+  <script src="../static/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../static/vendors/chart.js/Chart.min.js"></script>
+  <script src="../static/vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="../static/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="../static/js/dataTables.select.min.js"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../static/js/off-canvas.js"></script>
+  <script src="../static/js/hoverable-collapse.js"></script>
+  <script src="../static/js/template.js"></script>
+  <script src="../static/js/settings.js"></script>
+  <script src="../static/js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="../static/js/dashboard.js"></script>
+  <script src="../static/js/Chart.roundedBarCharts.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
+
